@@ -1,0 +1,64 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Home</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.8/angular.min.js"></script>
+
+  <h2> The Credit Card Balance Transfer Calculator
+  </h2>
+
+  
+
+  <p>
+    This calculator aims to consolidate all other credit card balances and pay in fixed installments for <b> up to 24 months! </b>
+    
+  </p>
+  <p><b><u>
+    It is extremely easy to use! All you got to do is to follow this simple instructions below: </u></b></p>
+
+    <p>
+    1. Input your balance transfer amount </p>
+    <p>
+    2. Select the payment term you wish to know more. </p>
+    <p>
+    3. Click the "Compute" button to know the necessary details. 
+    </p>
+
+  <p><b> 
+    Enter your balance transfer amount:
+  </b></p>
+
+  <ion-item>
+  <ion-label><h5> Balance Transfer Amount (P): </h5></ion-label>
+  <ion-input type="number" min="0" max="infinity" [(ngModel)]="balanceamount"></ion-input>
+  </ion-item>
+
+  <p><b>
+    Select your payment term below:
+    (6, 12, 18, or 24 months)
+  </b></p>
+
+  <ion-item>
+  <ion-label> <h5> Payment Term: </h5></ion-label>
+  <ion-input type="number" min="6" max="24" step="6" [(ngModel)]="paymentTerm"></ion-input>
+  </ion-item>
+
+  <button ion-button color="danger" (click)="compute()">Compute</button>
+
+  <br /><br />
+    <ion-item *ngIf="totalinterestpayable">
+      <h3> Your total interest payable is: {{totalinterestpayable | currency: '&#8369;'}} </h3>
+  </ion-item>
+
+  <ion-item *ngIf="monthlypayment">
+      <h3> Your total monthly payment is: {{monthlypayment | currency: '&#8369;'}} </h3>
+  </ion-item>
+
+  <ion-item *ngIf="totalamountpayable">
+      <h3> Your total amount payable is: {{totalamountpayable | currency: '&#8369;'}} </h3>
+  </ion-item>
+
+</ion-content>
